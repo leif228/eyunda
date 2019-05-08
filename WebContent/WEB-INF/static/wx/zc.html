@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>我要找船</title>
+<link href="../css/bootstrap.css" media="screen" rel="stylesheet"
+	type="text/css">
+<link href="../css/bootstrap-responsive.css" media="screen"
+	rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<style>
+<!--
+.order-title {
+	background: #E4E4E4;
+	height: 30px;
+	line-height: 30px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-align: center
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.clear:after {
+	display: block;
+	clear: both;
+	content: "";
+	visibility: hidden;
+	height: 0;
+}
+
+div.divider-content {
+	display: block;
+	border-bottom-color: #F5F5F5;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-top-color: #CDCDCD;
+	border-top-style: solid;
+	border-top-width: 1px;
+	height: 0;
+	margin: 20px 0;
+	position: relative;
+}
+
+div.divider-content>span {
+	background-color: #FFFFFF;
+	background-image: url('../img/divider.jpg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat no-repeat;
+	display: block;
+	height: 9px;
+	left: 50%;
+	margin-left: -21px;
+	padding: 0 3px;
+	position: absolute;
+	top: -4px;
+	width: 36px;
+}
+
+.boat-detail-text {
+	margin: 10px 0px;
+}
+/*评论样式*/
+.one-comment {
+	margin-bottom: 10px;
+}
+
+.one-comment-logo {
+	width: 10%;
+}
+
+.one-comment-logo img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ccc;
+	padding: 2px;
+	border-radius: 4px;
+}
+
+.one-comment-detail {
+	float: left;
+	margin-left: 10px;
+	width: 80%;
+}
+
+.one-comment-time {
+	float: right;
+}
+
+.one-comment-detail-res {
+	font-weight: bold;
+}
+-->
+</style>
+
+</head>
+<body>
+	<div id="container">
+		<div id="order-basic-info" style="margin-top: 20px;">
+			<div class="row-fluid">
+				<div class=" span4">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th colspan="4" style="text-align: center; background: #E4E4E4;">我要找船简介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th colspan="4" style="text-align: center;">
+
+									<div class="boat-detail-text" >
+									平台通过船舶监控和船舶动态上报功能，实时分析出该船舶的位置和装载情况，实时的呈现在货主面前，
+									货主只要点击货物所在地，就能看到适合装该货物的所有船只，做到了货物的即时、快捷运输，促进了商业的发展。</div>
+								</th>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+
+
+			</div>
+		</div>
+		<!-- 详情开始 -->
+		<div class="order-title">功能操作</div>
+		<div id="order-more-detail">
+			<div class="row-fluid">
+				<div class="span4">
+					<div>
+						<img src="../img/wx/s1.png" />
+					</div>
+					<div class="boat-detail-text" >
+						用户登入后，进入主页面，如上图所示。页面上方下拉选默认选中船舶，可在搜索输入框中输入“船类/船名/MMSI/船代”，点击搜索进行精确查找。
+						也可以点击左侧“船舶”菜单，选择其子菜单“分类”或“船舶动态”分别查找。
+					</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/s2.png" />
+					</div>
+					<div class="boat-detail-text"  >
+					用户点击“分类”子菜单，进入如上图所示页面，用户可点击船舶类别进行查找所需类别船舶。
+					</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/s3.png" />
+					</div>
+					<div class="boat-detail-text">
+						用户点击“船舶动态”子菜单，进入如上图所示页面。用户选择不同的地区后，再选择在该地区三种不同的船舶动态“已经到”、“将要到”、“刚离开”后，
+						就可以查看到在该地区不同船舶动态下的所有船舶。</div>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span4">
+					<div>
+						<img src="../img/wx/s4.png" />
+					</div>
+					<div class="boat-detail-text" >
+						   用户通过以上方法查看到的船舶会在当前列表中显视出来，选择列表中一条船舶，进入如上图所示页面，
+						用户可以在这里查看到该船舶的详细情况。选定该船舶后，可点击“我有货要运”按钮进入到合同编辑页面，可以起草合同，
+						关于合同编辑帮助可查看“功能介绍”下“合同签定”菜单项。也可点击“收藏”按钮收藏该船舶，收藏的船舶可进入船舶登记菜单项查看到。
+					</div>
+				</div>
+								
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

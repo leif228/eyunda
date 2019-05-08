@@ -1,0 +1,16 @@
+eclipse安装后，在安装目录有个eclipse.ini文件，里面有以下几行
+-vmargs
+-Xms40m
+-Xmx128m
+
+这几个选项用来配置eclipse启动时候的内存分配方案，Xms是初始化内存大小，Xmx是最大可使用内存大小
+改成512到1024 问题即可解决
+
+ 在eclipse中扩大tomcat的内存
+
+在服务窗口上双击tomcat服务,在over view 上点击open launch configuration;
+再选择arguments标签,在vm arguments框中添加
+
+-Xms256m -Xmx512m -XX:PermSize=128M -XX:MaxNewSize=256m -XX:MaxPermSize=256m
+
+即可，如果项目较大，展开timeouts，将start时间加长

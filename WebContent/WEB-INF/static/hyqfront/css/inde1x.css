@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*Factory tour*/
+.zhanshi_tp{position:relative;width:685px;  margin-top:25px; margin-left:15px;}
+.zhanshi_tp .ulBigPic{width:562px;height:376px; margin-left:60px;overflow:hidden;}
+.zhanshi_tp .ulBigPic li{width:562px;height:376px;display:none;}
+.zhanshi_tp .ulBigPic .liSelected{display:block;}
+.zhanshi_tp .ulBigPic img{width:562px;height:376px}
+.zhanshi_tp .sLeftBtnA,.zhanshi_tp .sLeftBtnASel,.zhanshi_tp .sLeftBtnABan,.zhanshi_tp .sRightBtnA,.zhanshi_tp .sRightBtnASel,.zhanshi_tp .sRightBtnABan{width:28px;height:57px;display:block;position:absolute;top:270px; }
+.zhanshi_tp .sLeftBtnA,.zhanshi_tp .sLeftBtnASel,.zhanshi_tp .sRightBtnA,.zhanshi_tp .sRightBtnASel{cursor:pointer;}
+.zhanshi_tp .sLeftBtnA,.zhanshi_tp .sLeftBtnASel,.zhanshi_tp .sLeftBtnABan{left:10px; background:url(../images/Factory_left_da.jpg)}
+.zhanshi_tp .sRightBtnA,.zhanshi_tp .sRightBtnASel,.zhanshi_tp .sRightBtnABan{right:10px;background:url(../images/Factory_right_da.jpg)}
+
+.zhanshi_tp .dSmallPicBox{width:685px;height:154px;position:relative; margin-top:16px; }
+.zhanshi_tp .dSmallPic{width:565px;height:77px;position:absolute;left:60px;top:0px;overflow:hidden;}
+.zhanshi_tp .dSmallPic ul{position:absolute;}
+.zhanshi_tp .dSmallPic li{width:115px;height:77px;float:left;display:inline;cursor:pointer;overflow:hidden;  margin-left:13px; margin-right:13px}
+.zhanshi_tp .dSmallPic .sPic{width:115px;height:77px;display:block;}
+.zhanshi_tp .dSmallPic .sPic img{width:115px;height:77px;}
+
+.zhanshi_tp .sLeftBtnB,.zhanshi_tp .sLeftBtnBSel,.zhanshi_tp .sLeftBtnBBan,.zhanshi_tp .sRightBtnB,.zhanshi_tp .sRightBtnBSel,.zhanshi_tp .sRightBtnBBan{width:19px;height:20px;display:block;position:absolute;top:28px;}
+.zhanshi_tp .sLeftBtnB,.zhanshi_tp .sLeftBtnBSel,.zhanshi_tp .sRightBtnB,.zhanshi_tp .sRightBtnBSel{cursor:pointer;}
+.zhanshi_tp .sLeftBtnB,.zhanshi_tp .sLeftBtnBSel,.zhanshi_tp .sLeftBtnBBan{left:30px; background:url(../images/Factory_left_xiao.jpg) no-repeat}
+
+.zhanshi_tp .sRightBtnB,.zhanshi_tp .sRightBtnBSel,.zhanshi_tp .sRightBtnBBan{right:30px; background:url(../images/Factory_right_xiao.jpg) no-repeat}
+
+
+
+
+
+
+

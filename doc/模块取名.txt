@@ -1,0 +1,129 @@
+<input type="hidden" 1.space-order-commonList.jsp;space-order-commonList.js;
+
+2.space-order-totebinEdit.jsp;space-order-totebinEdit.js;
+  space-order-bulkEdit.jsp;space-order-bulkEdit.js;
+  space-order-wrapEdit.jsp;space-order-wrapEdit.js;
+  space-order-noshipEdit.jsp;space-order-noshipEdit.js;
+  space-order-periodEdit.jsp;space-order-periodEdit.js;
+  space-order-trustEdit.jsp;space-order-trustEdit.js;
+
+3.MyOrderCommonController.java;
+  /orderList;
+  /orderTotebinEdit;/orderBulkEdit;/orderWrapEdit;/orderNoshipEdit;/orderPeriodEdit;/orderTrustEdit;
+  /orderDelete;
+  /orderTotebinSave;/orderBulkSave;/orderWrapSave;/orderNoshipSave;/orderPeriodSave;/orderTrustSave;
+  /orderSubmit;
+  /orderAudit;
+  /orderStartSign;
+  /orderEndSign;
+  /orderApproval;
+  /orderPayList;
+  /orderPaySave;
+  /orderArchive;
+
+4.OrderCommonService.java;
+
+
+登录login
+注册register
+绑定binding
+找回密码user-passwd
+首页main
+    搜索route-search
+    分类sort-search
+    按地区area-search
+    按代理人operator-search
+    车船浏览ship-detail
+设置
+    基本信息user-info
+    帐户信息user-account
+    申请成为代理人user-apply
+  --------------
+    登出logout
+消息
+    通知message
+    即时沟通chat
+        表情
+        图片
+        声音
+        位置
+        文档
+联系人contact
+    承运人carrier
+    托运人consignor
+    代理人operator
+    最近联系人relation
+车船
+    基本属性ship-info
+    分类属性ship-attr
+    图片上传ship-atta
+    动态报价ship-price
+    离港到港ship-report
+    实时监控ship-minitor
+合同order
+    新建或修改
+        选择模板order-seltemp
+        查找托运人order-consignor
+        查找车船order-ship
+        货物资料order-cargo
+            添加集装箱order-container
+            移除集装箱
+            添加干散货order-bulkcargo
+            移除干散货
+        装卸约定order-load
+        结算约定order-settle
+        特约条款order-item
+    浏览order-browse
+    删除order-delete
+    起签order-startsign
+    预签order-presign
+    确签order-endsign
+    首付order-firstpay
+    二付order-secondpay
+    结付order-endpay
+    月付order-monthpay
+    评价order-evaluate
+帐务
+    查询列表settle
+后台管理
+权限管理
+    管理员
+    角色
+    权限
+    操作日志
+会员管理
+    代理人审批
+        审批
+        取消
+    会员查询
+        删除
+车船管理
+    类别管理
+        增加同级
+        增加下级
+        修改节点
+            保存
+        删除节点
+    类别属性
+        属性名
+        属性值
+    车船查询
+        浏览
+        删除
+合同管理
+    合同模板管理
+        上传
+        下载
+        删除
+    合同查询
+        合同浏览
+        无效合同删除
+帐务管理
+    分帐审核
+        分帐
+        退款
+    转帐付款
+    帐务查询
+通知管理
+    查看
+    删除

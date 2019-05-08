@@ -1,0 +1,71 @@
+SpringMVC的 resources注解用来处理静态文件
+
+spring mvc 的<mvc;resources mapping="***" location="***">标签是在spring3.0.4出现的，主要是用来进行静态资源的访问。在spring3.0.4出来的时候spring还没有更新其schema所以在配置文件中有可能找不到<mvc:resources >标签，这个问题在spring3.0.5中已经解决，而且网上也有很多其他的解决方案，我在这里就不记录了。  
+
+首先使用spring mvc需要配置其使用的servlet.在web.xml中:  
+Java代码  收藏代码  
+  
+    	<servlet>    
+	        <servlet-name>springMVC</servlet-name>    
+	        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>    
+	        <load-on-startup>1</load-on-startup>    
+        </servlet>    
+        
+        <servlet-mapping>    
+            <servlet-name>springMVC</servlet-name>    
+            <url-pattern>/</url-pattern>    
+        </servlet-mapping>    
+  
+  
+这里给 servlet-name定义的名称是springMVC,这样的话会在web-inf下spring会自动扫描一个XML文件名叫springMVC-servlet.xml文件，这里都是spring自动扫描的，如果你没有提供，将会报一个文件查找不到的异常。看了下org.springframework.web.servlet.DispatcherServlet加载这个文件的过程，貌似这个文件存放的地址也是可以进行设置的，具体怎么搞我还没有研究。  
+  
+由于spring mvc拦截了所有请求，所以当你设置  
+引用  
+<servlet-mapping>  
+<servlet-name>springMVC</servlet-name>  
+<url-pattern>/</url-pattern>  
+</servlet-mapping>  
+  
+的时候会影响到静态资源文件的获取，这样就需要有这个标签来帮你分类完成获取静态资源的责任。  
+  
+springMVC-servlet.xml文件  
+Java代码  收藏代码  
+  
+    <?xml version="1.0" encoding="UTF-8"?>    
+    <beans xmlns="http://www.springframework.org/schema/beans"      
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"      
+        xmlns:mvc="http://www.springframework.org/schema/mvc"    
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd       
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">       
+        
+        <mvc:resources mapping="/javascript/**" location="/static_resources/javascript/"/>    
+        <mvc:resources mapping="/styles/**" location="/static_resources/css/"/>    
+        <mvc:resources mapping="/images/**" location="/static_resources/images/"/>    
+        <mvc:default-servlet-handler />    
+            
+            
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">    
+            <property name="prefix" value="/WEB-INF/views/"/>    
+            <property name="suffix" value=".jsp"/>    
+        </bean>    
+        
+    </beans>    
+  
+  
+这里可以看到我所有的页面引用到/styles/**的资源都从/static_resources/css里面进行查找。  
+  
+页面的一段静态资源访问的代码。  
+Java代码  收藏代码  
+  
+    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>    
+    <HTML>    
+    <HEAD>    
+      <TITLE> ABCDEFG </TITLE>    
+    <link type="text/css" rel="stylesheet" href="<c:url value='/styles/siteboard.css'/>">    
+    ...    
+    ...    
+    ...    
+  
+  
+  
+可能这个标签的真谛就是为了引用资源的访问不会类似CONTROLLER一样被拦截，区分出关注的资源的访问，一般我们在springMVC里面的拦截都会配置为"/"，拦截所有的。 

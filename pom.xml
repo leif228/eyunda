@@ -1,0 +1,98 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hangyi</groupId>
+	<artifactId>eyunda</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>eyunda</name>
+	<description>eyunda-MVN-template</description>
+	<!-- Jar版本管理 -->
+	<properties>
+		<java.version>1.7</java.version>
+		<maven.skipTests>true</maven.skipTests>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<!-- 项目依赖 -->
+	<dependencies>
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>3.0.1</version>
+		    <scope>provided</scope> 
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>ROOT</finalName>
+		<plugins>
+			<plugin>
+				<!-- 编译器插件，可以指定JDK版本，项目编码等 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<showWarnings>true</showWarnings>
+					<compilerArguments>  
+                        <extdirs>${basedir}/WebContent/WEB-INF/lib</extdirs>
+                    </compilerArguments>  
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18</version>
+				<configuration>
+					<skipTests>${maven.skipTests}</skipTests>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>3.0.1</version>
+				<extensions>true</extensions>
+			</plugin>
+			<!-- tomcat7:run -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<username>root</username>
+					<password>root</password>
+					<path>/${project.artifactId}</path>
+					<warFile>${project.build.directory}/${project.artifactId}.war</warFile>  
+        			<warSourceDirectory>WebContent</warSourceDirectory>  
+        			<uriEncoding>${project.build.sourceEncoding}</uriEncoding>  
+				</configuration>
+			</plugin>
+			<!-- mvn package -->
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-war-plugin</artifactId>
+		        <version>3.0.0</version>
+		        <configuration>
+		        	<useCache>false</useCache>
+		        	<webXml>${basedir}/WebContent/WEB-INF/web.xml</webXml>
+		        	<webResources>
+			            <resource>
+			              <directory>WebContent</directory>  
+			            </resource>
+		          	</webResources>
+		        </configuration>
+		    </plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
+</project>

@@ -1,0 +1,62 @@
+Bootstrap 模态对话框只加载一次 remote 数据的解决办法
+
+1. Bootstrap 模态对话框和简单使用
+
+<div id="myModal" class="modal hide fade">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>对话框标题</h3>
+    </div>
+    <div class="modal-body">
+        <p>对话框主体</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">取消</a>
+        <a href="#" class="btn btn-primary" data-dismiss="modal">确定</a>
+    </div>
+</div>
+
+显示效果与下图相似：
+
+可以使用按钮或链接直接调用模态对话框，这是简单的用法：
+
+<button type="button" data-toggle="modal" data-target="#myModal">打开对话框</button>
+<a href="#myModal" role="button" class="btn" data-toggle="modal">打开对话框</button>
+
+这样只能把静态内容在对话框中显示出来，使用对话框的 remote 选项可以实现更强大的效果。
+
+2. 使用 remote 选项让模态对话框加载页面到 .modal-body 中
+
+有两种方法，一种是使用链接，另一种就是使用脚本。
+
+2.1 使用链接
+
+<a href="page.jsp" data-toggle="modal" data-target="#myModal">打开对话框</a>
+
+当点击此链接时，page.jsp 的内容会被加载到对话框的 .modal-body 中，随即显示对话框。
+
+2.2 使用脚本
+
+$("#myModal").modal({
+    remote: "page.jsp"
+});
+
+这段脚本的效果和使用链接是一样的，当这段脚本执行后，page.jsp 的内容会被加载到对话框的 .modal-body 中，随即显示对话框。
+
+这两种方法的背后，都是 Bootstrap 调用了 jQuery 的 load() 方法，从服务器端加载了 page.jsp 页面。但这个加载只会发生一次，后面不管你点击几次链接，或者执行几次脚本，哪怕改变传递给 remote 选项的值，对话框都不会重新加载页面，这真是个让人头疼的事情。不过问题还是能够解决的。
+
+3. 移除数据，让对话框能够在每次打开时重新加载页面
+
+在搜索并查阅了相关文档后，发现在对话框的 hidden 事件里写上一条语句就可以了：
+
+$("#myModal").on("hidden", function() {
+    $(this).removeData("modal");
+});
+
+也可以在每次打开对话框之前移除数据，效果是一样的。
+
+注：上面的代码基于 Bootstrap v2，如果使用 Bootstrape v3，模态对话框的 HTML 和事件的写法有一些不同，例如对于上面的 hidden 事件，要写成：
+
+$("#myModal").on("hidden.bs.modal", function() {
+    $(this).removeData("bs.modal");
+});

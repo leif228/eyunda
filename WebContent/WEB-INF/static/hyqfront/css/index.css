@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+.fl{ float:left}
+.fr{ float:right}
+.clear{ clear:both; font-size:0px; height:0px;}
+.ct{ text-align:center;}
+.cr{ text-align:right;}
+.cl{ text-align:left;}
+
+p,form,ul{ margin:0px; padding:0px}
+ul{ list-style:none}
+li{ list-style:none; padding:0px; margin:0px;}
+
+
+.sysousuo{
+	background: url(../images/sysousuo_03.jpg) no-repeat;
+	width: 304px;
+	height: 38px;
+	margin-top: 0px;
+	padding-left: 50px;
+}
+.sysousuo p { width:230px; padding-left:10px; padding-right:10px;}
+.sysousuo p a {
+	color: #FFF;
+}
+.sysousuo p a:hover {
+	color: #FFF;
+}
+.sysuoming{ width:220px; height:38px; border:none; background:none; color:#986633; line-height:31px; padding-left:14px; margin-top:0px;}
+.sytijiao{ /*width:50px;*/ width:30px; height:30px; background:none; border:none; margin-left:16px; cursor:pointer;}
+

@@ -1,0 +1,65 @@
+spring 事务注解
+
+默认遇到throw new RuntimeException("...");会回滚
+需要捕获的throw new Exception("...");不会回滚
+
+// 指定回滚
+@Transactional(rollbackFor=Exception.class) 
+    public void methodName() {
+       // 不会回滚
+       throw new Exception("...");
+    } 
+//指定不回滚
+@Transactional(noRollbackFor=Exception.class)
+    public ItimDaoImpl getItemDaoImpl() {
+        // 会回滚
+        throw new RuntimeException("注释");
+    } 
+
+    // 如果有事务,那么加入事务,没有的话新建一个(不写的情况下)
+    @Transactional(propagation=Propagation.REQUIRED) 
+    // 容器不为这个方法开启事务
+    @Transactional(propagation=Propagation.NOT_SUPPORTED)
+    // 不管是否存在事务,都创建一个新的事务,原来的挂起,新的执行完毕,继续执行老的事务
+    @Transactional(propagation=Propagation.REQUIRES_NEW) 
+    // 必须在一个已有的事务中执行,否则抛出异常
+    @Transactional(propagation=Propagation.MANDATORY)
+    // 必须在一个没有的事务中执行,否则抛出异常(与Propagation.MANDATORY相反)
+    @Transactional(propagation=Propagation.NEVER) 
+    // 如果其他bean调用这个方法,在其他bean中声明事务,那就用事务.如果其他bean没有声明事务,那就不用事务.
+    @Transactional(propagation=Propagation.SUPPORTS) 
+    
+    /*
+    public void methodName(){
+       // 本类的修改方法 1
+       update();
+       // 调用其他类的修改方法
+       otherBean.update();
+       // 本类的修改方法 2
+       update();
+    }
+    other失败了不会影响 本类的修改提交成功
+    本类update的失败,other也失败
+    */
+@Transactional(propagation=Propagation.NESTED) 
+// readOnly=true只读,能插入，但不能更新,删除 
+@Transactional (propagation = Propagation.REQUIRED,readOnly=true) 
+// 设置超时时间
+@Transactional (propagation = Propagation.REQUIRED,timeout=30)
+// 设置数据库隔离级别
+@Transactional (propagation = Propagation.REQUIRED,isolation=Isolation.DEFAULT)
+
+Propagation事务传播行为
+PROPAGATION_REQUIRED--支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。
+PROPAGATION_SUPPORTS--支持当前事务，如果当前没有事务，就以非事务方式执行。
+PROPAGATION_MANDATORY--支持当前事务，如果当前没有事务，就抛出异常。
+PROPAGATION_REQUIRES_NEW--新建事务，如果当前存在事务，把当前事务挂起。
+PROPAGATION_NOT_SUPPORTED--以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。
+PROPAGATION_NEVER--以非事务方式执行，如果当前存在事务，则抛出异常。
+PROPAGATION_NESTED--如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则进行与PROPAGATION_REQUIRED类似的操作。
+
+Isolation事务隔离级别
+@Transactional(isolation = Isolation.READ_UNCOMMITTED)读取未提交数据(会出现脏读, 不可重复读) 基本不使用
+@Transactional(isolation = Isolation.READ_COMMITTED)读取已提交数据(会出现不可重复读和幻读)
+@Transactional(isolation = Isolation.REPEATABLE_READ)可重复读(会出现幻读)
+@Transactional(isolation = Isolation.SERIALIZABLE)串行化

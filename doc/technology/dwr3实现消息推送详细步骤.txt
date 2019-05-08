@@ -1,0 +1,290 @@
+dwr3实现消息推送详细步骤
+
+     第一、在项目中引入dwr.jar，然后在web.xml中进行配置，配置如下：
+
+     <servlet>
+
+        <servlet-name>dwr-invoker</servlet-name>
+
+        <servlet-class>
+
+            org.directwebremoting.servlet.DwrServlet
+
+        </servlet-class>
+
+        <init-param>
+
+            <param-name>crossDomainSessionSecurity</param-name>
+
+               <param-value>false</param-value>
+
+            </init-param>
+
+        <init-param>
+
+          <param-name>allowScriptTagRemoting</param-name>
+
+          <param-value>true</param-value>
+
+        </init-param>
+
+        <init-param>
+
+          <param-name>classes</param-name>
+
+          <param-value>java.lang.Object</param-value>
+
+        </init-param>
+
+        <init-param>
+
+            <param-name>activeReverseAjaxEnabled</param-name>
+
+            <param-value>true</param-value>
+
+        </init-param>
+
+        <init-param>
+
+           <param-name>initApplicationScopeCreatorsAtStartup</param-name>
+
+           <param-value>true</param-value>
+
+        </init-param>
+
+        <init-param>
+
+            <param-name>maxWaitAfterWrite</param-name>
+
+            <param-value>3000</param-value>
+
+        </init-param>
+
+        <init-param>
+
+            <param-name>debug</param-name>
+
+            <param-value>true</param-value>
+
+        </init-param>
+
+        <init-param>
+
+            <param-name>logLevel</param-name>
+
+            <param-value>WARN</param-value>
+
+        </init-param>
+
+    </servlet>
+
+    第二：在web.xml的同级目录下新建dwr.xml文件，内容如下
+
+     <!DOCTYPE dwr PUBLIC
+
+          "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN"
+
+          "http://getahead.org/dwr/dwr30.dtd">
+
+     <dwr>
+
+          <alow>
+
+               <create creator="new" javascript="MessagePush">
+
+                 <param name="class" value="com.huatech.messageremind.service.MessagePush"/>
+
+              </create>
+
+          </alow>
+
+     </dwr>
+
+    这个是dwr的基本配置，MessagePush在页面的javascript中使用，com.huatech.messageremind.service.MessagePush实现了想要调用的方法，MessagePush相当于java类中的一个映射，在javascript中使用MessagePush.java类中实现的方法，即可在dwr中调用。
+
+    第三，要想使用dwr，还要在你想要推送的页面中引入script，
+
+        <script type="text/javascript" src="<%=basepath%>dwr/engine.js"></script>
+
+        <script type="text/javascript" src="<%=basepath%>dwr/util.js"></script>
+
+        <script type="text/javascript" src="<%=basepath%>dwr/interface/MessagePush.js"></script>
+
+          可以看见，也引入了dwr.xml中配置的javascript，engine.js和util.js是必须引入的。
+
+ 以上三点都是基本配置，没什么好说的，想使用dwr，就得这么做。
+
+   第四，实现消息的精准推送
+
+        消息推送简单，但是想实现精准推送就需要做一些别的操作了
+
+        1 在任何一个用户登录的时候，都需要将其userId或者其他唯一性标识放入session中，我放的是userId，
+
+          这里就以 userId为唯一性标识。
+
+        2 在载入想推送的页面时，需要onload一个我在MessagePush类中实现的方法，当然了，需要使用dwr调用
+
+          js的调用方法如下：
+
+           function onPageLoad(){
+
+             var userId = '${userinfo.humanid}';
+
+             MessagePush.onPageLoad(userId);
+
+          }
+
+            <body onload="dwr.engine.setActiveReverseAjax(true);dwr.engine.setNotifyServerOnPageUnload(true);onPageLoad();> 在onload中的三个函数都是必须的，其中dwr.engine.setActiveReverseAjax(true);dwr.engine.setNotifyServerOnPageUnload(true);是dwr中的函数。
+
+           MessagePush类中实现的方法如下：
+
+           public void onPageLoad(String userId) {
+
+              ScriptSession scriptSession = WebContextFactory.get().getScriptSession();
+
+              scriptSession.setAttribute(userId, userId);
+
+              DwrScriptSessionManagerUtil dwrScriptSessionManagerUtil = new DwrScriptSessionManagerUtil();
+
+              try {
+
+                     dwrScriptSessionManagerUtil.init();
+
+              } catch (ServletException e) {
+
+                     e.printStackTrace();
+
+              }
+
+       }
+
+         大家注意到，onPageLoad方法中还有一个名为DwrScriptSessionManagerUtil的类，该类如下实现：
+
+         public class DwrScriptSessionManagerUtil extends DwrServlet{
+
+       private static final long serialVersionUID = -7504612622407420071L;
+
+ 
+
+       public void init()
+
+       throws ServletException {
+
+ 
+
+ 
+
+              Container container = ServerContextFactory.get().getContainer();
+
+ 
+
+              ScriptSessionManager manager = container
+
+                            .getBean(ScriptSessionManager.class);
+
+ 
+
+              ScriptSessionListener listener = new ScriptSessionListener() {
+
+ 
+
+                     public void sessionCreated(ScriptSessionEvent ev) {
+
+ 
+
+                            HttpSession session = WebContextFactory.get().getSession();
+
+ 
+
+                            String userId =((User) session.getAttribute("userinfo")).getHumanid()+"";
+
+                            System.out.println("a ScriptSession is created!");
+
+                            ev.getSession().setAttribute("userId", userId);
+
+ 
+
+                     }
+
+ 
+
+                     public void sessionDestroyed(ScriptSessionEvent ev) {
+
+                            System.out.println("a ScriptSession is distroyed");
+
+                     }
+
+ 
+
+              };
+
+ 
+
+              manager.addScriptSessionListener(listener);
+
+ 
+
+       }
+
+ 
+
+}
+
+
+      第五、消息推送
+
+            在你想要推送消息的时候，调用如下方法：
+
+             public void sendMessageAuto(String userid,String message) {
+
+              final String userId = userid ;
+
+              final String autoMessage = message;
+
+              Browser.withAllSessionsFiltered(new ScriptSessionFilter() {
+
+                     public boolean match(ScriptSession session) {
+
+                            if (session.getAttribute("userId") == null)
+
+                                   return false;
+
+                            else
+
+                                   return (session.getAttribute("userId")).equals(userId);
+
+                     }
+
+              }, new Runnable(){
+
+                     private ScriptBuffer script = new ScriptBuffer();
+
+                     public void run() {
+
+                            script.appendCall("showMessage", autoMessage);
+
+                            Collection<ScriptSession> sessions = Browser
+
+                            .getTargetSessions();
+
+                            for (ScriptSession scriptSession : sessions) {
+
+                                   scriptSession.addScript(script);
+
+                            }
+
+                     }
+
+                    
+
+              });
+
+       }
+
+         userid即为你想推给消息的人，message为你想推送的消息，大家注意到这里script.appendCall("showMessage", autoMessage);
+
+         其中showMessage为在想推送的页面中的javascript方法，autoMessage是这个方法的参数，这样那个页面就能得到推送的内容了，至于如何展现，就看你的需要了。
+
+ 
+
+        至此，一个dwr消息精准推送的步骤就写完了，其实很多东西都不难，只是我们不知道该怎么用而已。

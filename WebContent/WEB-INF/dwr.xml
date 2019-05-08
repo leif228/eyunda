@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN" "http://getahead.org/dwr/dwr30.dtd">
+<dwr>
+	<allow>
+		<!-- 事件转换器convert <convert match="com.hangyi.eyunda.chat.event.BaseEvent" 
+			converter="bean"> <param name="include" value="eventMap" /> </convert> -->
+
+		<!-- dwr处理的service -->
+		<create creator="spring" javascript="DwrChatService">
+			<param name="beanName" value="dwrChatService" />
+		</create>
+	</allow>
+</dwr>

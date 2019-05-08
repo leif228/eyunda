@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>聊天方式</title>
+<link href="../css/bootstrap.css" media="screen" rel="stylesheet"
+	type="text/css">
+<link href="../css/bootstrap-responsive.css" media="screen"
+	rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<style>
+<!--
+.order-title {
+	background: #E4E4E4;
+	height: 30px;
+	line-height: 30px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-align: center
+}
+.order-title-small {
+	background: #E4E4E4;
+	height: 20px;
+	line-height: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-align: left
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.clear:after {
+	display: block;
+	clear: both;
+	content: "";
+	visibility: hidden;
+	height: 0;
+}
+
+div.divider-content {
+	display: block;
+	border-bottom-color: #F5F5F5;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-top-color: #CDCDCD;
+	border-top-style: solid;
+	border-top-width: 1px;
+	height: 0;
+	margin: 20px 0;
+	position: relative;
+}
+
+div.divider-content>span {
+	background-color: #FFFFFF;
+	background-image: url('../img/divider.jpg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat no-repeat;
+	display: block;
+	height: 9px;
+	left: 50%;
+	margin-left: -21px;
+	padding: 0 3px;
+	position: absolute;
+	top: -4px;
+	width: 36px;
+}
+
+.boat-detail-text {
+	margin: 10px 0px;
+}
+/*评论样式*/
+.one-comment {
+	margin-bottom: 10px;
+}
+
+.one-comment-logo {
+	width: 10%;
+}
+
+.one-comment-logo img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ccc;
+	padding: 2px;
+	border-radius: 4px;
+}
+
+.one-comment-detail {
+	float: left;
+	margin-left: 10px;
+	width: 80%;
+}
+
+.one-comment-time {
+	float: right;
+}
+
+.one-comment-detail-res {
+	font-weight: bold;
+}
+-->
+</style>
+
+</head>
+<body>
+	<div id="container">
+		<div id="order-basic-info" style="margin-top: 20px;">
+			<div class="row-fluid">
+				<div class=" span4">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th colspan="4" style="text-align: center; background: #E4E4E4;">聊天方式简介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th colspan="4" style="text-align: center;">
+
+									<div class="boat-detail-text" >
+									在找船或找货过程中，与代理人沟通的聊天记录，可在消息列表中查看到。单击一条记录进入聊天页面可继续聊天，在聊天页面可传文字信息、语音信息、传文件。
+									实现了即时通讯，方便的语音聊天、文件传输功能，更好的促进货物运输，高效、快捷完成。</div>
+								</th>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+
+
+			</div>
+		</div>
+		<!-- 详情开始 -->
+		<div class="order-title">功能操作</div>
+		<div id="order-more-detail">
+			<div class="row-fluid">
+			<div class="order-title-small">1.1联系人(添加会话好友)</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/lt1.png" />
+					</div>
+					<div class="boat-detail-text" >
+						a)	登录自己的会员空间后，选择左边“联系人”模块，界面如上图所示。
+					</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/lt2.png" />
+					</div>
+					<div class="boat-detail-text" style="text-align: center;">
+					添加联系人界面</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/lt3.png" />
+					</div>
+					<div class="boat-detail-text">
+						b)	你可以到前台首页，界面如图添加联系人界面所示。点击右边联系人列表中的某一个，与他进行聊天，界面如上图所示，只要聊过天你们两个就是好友。</div>
+				</div>
+			
+
+				<div class="span4">
+					<div>
+						<img src="../img/wx/lt4.png" />
+					</div>
+					<div class="boat-detail-text">
+						c)	然后回到你的个人空间，查看联系人列表，刚才和你聊天的人的信息就出现在会话列表中，界面如上图所示。</div>
+				</div>
+			</div>
+				<!-- 间隔条 -->
+			<div class="divider-content">
+				<span></span>
+			</div>
+			<div class="row-fluid">
+				<div class="order-title-small">1.2联系人(添加子账号)</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/lt5.png" />
+					</div>
+					<div class="boat-detail-text">
+						a)	如果你是承运人，你可以到会员空间“设置”模块中，选择“子账号”，对子账户进行添加编辑，界面如上图所示。</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/lt6.png" />
+					</div>
+					<div class="boat-detail-text">
+						b)	然后再次查看联系人列表，选中“子账号”下拉，点击查询，你刚才所有的“子账号”信息就会出现在列表中，界面如上图所示</div>
+				</div>
+				
+			</div>
+				<!-- 间隔条 -->
+			<div class="divider-content">
+				<span></span>
+			</div>
+			<div class="row-fluid">
+				<div class="order-title-small">1.3联系人(添加货主、船东)</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/lt10.png" />
+					</div>
+					<div class="boat-detail-text">
+						a)	如果你是实名认证过，你可以到会员空间“设置”模块中，选择“代理关系”，对你代理的货主、船东进行添加编辑，界面如上图所示。</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/lt11.png" />
+					</div>
+					<div class="boat-detail-text">
+						b)	然后再次查看联系人列表，选中“货主”、“船东”下拉，点击查询，你刚才所有添加信息就会出现在列表中，界面如上图所示</div>
+				</div>
+				
+			</div>
+			<!-- 间隔条 -->
+			<div class="divider-content">
+				<span></span>
+			</div>
+			<div class="order-title-small">2进行沟通</div>
+			<div class="row-fluid">
+				<div class="span4">
+					<div>
+						<img src="../img/wx/lt7.png" />
+					</div>
+					<div class="boat-detail-text" style="text-align: center;">
+					聊天界面</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/lt8.png" />
+					</div>
+					<div class="boat-detail-text">
+						进行沟通:用户进入自己的会员空间后，选择左边“联系人”模块，右边页面可以看到自己的联系人列表，点击联系人头像可以进入到和该联系人聊天的页面，用户聊天页面如图货代聊天界面所示，船代聊天页面如上图所示。在聊天页面中你可以发送文字、图片、文档和语音。</div>
+				</div>
+								
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

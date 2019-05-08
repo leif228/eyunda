@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>合同签定</title>
+<link href="../css/bootstrap.css" media="screen" rel="stylesheet"
+	type="text/css">
+<link href="../css/bootstrap-responsive.css" media="screen"
+	rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<style>
+<!--
+.order-title {
+	background: #E4E4E4;
+	height: 30px;
+	line-height: 30px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-align: center
+}
+
+.order-title-small {
+	background: #E4E4E4;
+	height: 20px;
+	line-height: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-align: left
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.clear:after {
+	display: block;
+	clear: both;
+	content: "";
+	visibility: hidden;
+	height: 0;
+}
+
+div.divider-content {
+	display: block;
+	border-bottom-color: #F5F5F5;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-top-color: #CDCDCD;
+	border-top-style: solid;
+	border-top-width: 1px;
+	height: 0;
+	margin: 20px 0;
+	position: relative;
+}
+
+div.divider-content>span {
+	background-color: #FFFFFF;
+	background-image: url('../img/divider.jpg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat no-repeat;
+	display: block;
+	height: 9px;
+	left: 50%;
+	margin-left: -21px;
+	padding: 0 3px;
+	position: absolute;
+	top: -4px;
+	width: 36px;
+}
+
+.boat-detail-text {
+	margin: 10px 0px;
+}
+/*评论样式*/
+.one-comment {
+	margin-bottom: 10px;
+}
+
+.one-comment-logo {
+	width: 10%;
+}
+
+.one-comment-logo img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ccc;
+	padding: 2px;
+	border-radius: 4px;
+}
+
+.one-comment-detail {
+	float: left;
+	margin-left: 10px;
+	width: 80%;
+}
+
+.one-comment-time {
+	float: right;
+}
+
+.one-comment-detail-res {
+	font-weight: bold;
+}
+-->
+</style>
+
+</head>
+<body>
+	<div id="container">
+		<div id="order-basic-info" style="margin-top: 20px;">
+			<div class="row-fluid">
+				<div class=" span4">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th colspan="4" style="text-align: center; background: #E4E4E4;">合同签定功能简介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th colspan="4" style="text-align: center;">
+
+									<div class="boat-detail-text">
+										合同签定功能，展现了与单船舶相关的运输合同，清晰的显视了该合同的签定情况，可对还没有双方签字的合同进行编辑，合同双方都签了字，该合同不能更改。
+										可单击增加按钮，增加新的合同，填写合同的基本信息，还可选择合同模板，按模板填写合同，合同填写完成可单击合同进行预览，
+										对合同上不太清楚的地方可单击“在线咨询”或“拨打电话”即时解决问题。
+										还可以ptf格式下载合同。合同交易金额平台提供以第三方担保交易方式快捷支付。线上合同签定，实现第三方担保交易，保证货物运输快捷、高效、更安全。</div>
+								</th>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+
+
+			</div>
+		</div>
+		<!-- 详情开始 -->
+		<div class="order-title">功能操作</div>
+		<div id="order-more-detail">
+			<div class="order-title-small">1.合同生成（方法一）</div>
+			<div class="row-fluid">
+				<!-- <div class="span4">
+					<div class="boat-detail-text" style="text-align: center;">合同生成1.1</div>
+				</div> -->
+				<div class="span4">
+					<div>
+						<img src="../img/wx/order11.png" />
+					</div>
+					<div class="boat-detail-text">
+						在前台任意找一艘船，进入船舶详情页如上图所示。点击船舶图片下方的“我有货要运”按钮，进入合同编辑页面如下图所示。
+						</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/order12.png" />
+					</div>
+					<div class="boat-detail-text">
+						如上图所示，填写你要运输的货物信息，然后保存。系统即可自动生成合同，进入合同编辑页面，如下图所示。</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/order13.png" />
+					</div>
+					<div class="boat-detail-text">
+						如上图所示，你可以编辑你的合同，编辑完后保存即可。</div>
+				</div>
+
+			</div>
+			<!-- 间隔条 -->
+			<div class="divider-content">
+				<span></span>
+			</div>
+			<div class="order-title-small">2.合同生成（方法二）</div>
+			<div class="row-fluid">
+				<!-- <div class="span4">
+					<div>
+						<img src="../img/wx/order31.png" />
+					</div>
+					<div class="boat-detail-text" style="text-align: center;">合同生成3.1</div>
+				</div> -->
+				<div class="span4">
+					<div>
+						<img src="../img/wx/order21.png" />
+					</div>
+					<div class="boat-detail-text">
+						在前台任意找一货物，进入货物详情页如上图所示。
+						点击货物图片下方的“我来运”按钮，系统即可自动生成合同，进入合同编辑页面如下图所示。
+						</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/order22.png" />
+					</div>
+					<div class="boat-detail-text">
+						如上图所示，在合同编辑页面你可编辑合同，编辑完后保存即可。</div>
+				</div>
+
+			</div>
+			<!-- 间隔条 -->
+			<div class="divider-content">
+				<span></span>
+			</div>
+			<div class="order-title-small">3.合同签订及交易流程</div>
+			<div class="row-fluid">
+				<div class="span4">
+
+					<div class="boat-detail-text">
+						合同签订及交易流程如下:<br> 1. 承运人起签合同。<br> 2. 托运人确签合同。<br> 3.
+						托运人支付预付款。 （一次性付款）托运人支付所有费用。 （分期付款）托运人支付支付预付款。 （货到付款）托运人等待最终付款。<br>
+						4. 承运人准备装货。<br> 5. 托运人确认。 （一次性付款）托运人等待最终确认卸货。 （分期付款）托运人确认装货。
+						（货到付款）托运人等待最终付款。<br> 6. 托运人最终付款。 （一次性付款）托运人等待最终确认卸货。
+						（分期付款）托运人需付完剩余费用。 （货到付款）托运人需一次性付完所有费用。<br> 7. 承运人准备卸货。<br>
+						8. 托运人确认卸货。<br> 9. 交易完成，托运人可以对本次运输服务进行评价。
+					</div>
+				</div>
+
+			</div>
+			<!-- 间隔条 -->
+			<div class="divider-content">
+				<span></span>
+			</div>
+			<div class="order-title-small">4.下载合同</div>
+			<div class="row-fluid">
+				<div class="span4">
+					<div>
+						<img src="../img/wx/order41.png" />
+					</div>
+					<div class="boat-detail-text">下载合同：进入自己的会员空间后，点击左边“合同”模块，
+						在右边页面的合同列表中点击要下载的“合同号”，进入合同浏览页面如上图所示。
+						点击右上角的“下载合同”按钮可以看到一个对话框，点击“确定”按钮即可。</div>
+				</div>
+
+
+			</div>
+
+
+		</div>
+
+	</div>
+</body>
+</html>

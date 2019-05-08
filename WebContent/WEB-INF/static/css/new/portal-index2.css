@@ -1,0 +1,14 @@
+#scrollDivCargo, #scrollDivShip { position: relative; width: 100%; padding: 0px 15px 0 15px; background: #fff;overflow: hidden;}
+#scrollDivCargo li img , #scrollDivShip li img { float: left;}
+#scrollDivCargo li, #scrollDivShip li{ position: relative; height: 90px; padding-top: 3px; border-bottom: 1px solid #eee;}
+#scrollDivCargo dd, #scrollDivShip dd{margin-bottom:0px;}
+.scroll-con dd{
+	margin-top:5px;
+	color:gray;
+}
+.post{
+	padding-bottom: 0px;
+	border: 0px;
+	box-shadow: none; 
+	border-radius: 0px;
+}

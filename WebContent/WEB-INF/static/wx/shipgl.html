@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>船舶管理</title>
+<link href="../css/bootstrap.css" media="screen" rel="stylesheet"
+	type="text/css">
+<link href="../css/bootstrap-responsive.css" media="screen"
+	rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<style>
+<!--
+.order-title {
+	background: #E4E4E4;
+	height: 30px;
+	line-height: 30px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-align: center
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.clear:after {
+	display: block;
+	clear: both;
+	content: "";
+	visibility: hidden;
+	height: 0;
+}
+
+div.divider-content {
+	display: block;
+	border-bottom-color: #F5F5F5;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-top-color: #CDCDCD;
+	border-top-style: solid;
+	border-top-width: 1px;
+	height: 0;
+	margin: 20px 0;
+	position: relative;
+}
+
+div.divider-content>span {
+	background-color: #FFFFFF;
+	background-image: url('../img/divider.jpg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat no-repeat;
+	display: block;
+	height: 9px;
+	left: 50%;
+	margin-left: -21px;
+	padding: 0 3px;
+	position: absolute;
+	top: -4px;
+	width: 36px;
+}
+
+.boat-detail-text {
+	margin: 10px 0px;
+}
+/*评论样式*/
+.one-comment {
+	margin-bottom: 10px;
+}
+
+.one-comment-logo {
+	width: 10%;
+}
+
+.one-comment-logo img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ccc;
+	padding: 2px;
+	border-radius: 4px;
+}
+
+.one-comment-detail {
+	float: left;
+	margin-left: 10px;
+	width: 80%;
+}
+
+.one-comment-time {
+	float: right;
+}
+
+.one-comment-detail-res {
+	font-weight: bold;
+}
+-->
+</style>
+
+</head>
+<body>
+	<div id="container">
+		<div id="order-basic-info" style="margin-top: 20px;">
+			<div class="row-fluid">
+				<div class=" span4">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th colspan="4" style="text-align: center; background: #E4E4E4;">船舶管理功能简介</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th colspan="4" style="text-align: center;">
+
+									<div class="boat-detail-text">船舶管理功能，能管理我的所有船舶，可通过该功能，发布我的船舶，船舶发布后可在首页搜索出该船舶，方便查找。可通过增加按钮增加新的船舶，填写船舶的基本信息，上传船舶资料，管理船舶，发布船舶信息。实现平台船舶数据的采集。</div>
+								</th>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+
+
+			</div>
+		</div>
+		<!-- 详情开始 -->
+		<div class="order-title">功能操作</div>
+		<div id="order-more-detail">
+			<div class="row-fluid">
+				<div class="span4">
+					<div>
+						<img src="../img/wx/gl1.png" />
+					</div>
+					<div class="boat-detail-text">
+						船舶管理：承运人或者承运人的子账号可以对船舶进行管理。托运人可点击我的船舶下拉菜单选择收藏船舶项可查看收藏的船舶信息。<br>
+						进入个人空间后：选择“船舶管理”模块，界面如上图所示。此时有两种添加方式：<br> （1）
+						你可以点击“下载EXCEL模板”按钮，然后按照格式要求填写，最后点击“导入EXCEL”把你保存的EXCEL文件导入即可，这样你导入的船舶就会出现在你的列表中，该方法适合于添加大批量的船舶。
+						<br>（2） 你可以点击“添加”按钮，进入如下图界面。
+					</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/gl2.png" />
+					</div>
+					<div class="boat-detail-text">1)
+						在该界面选中“基本属性”选项，然后进行编辑，编辑完成后，点击“保存”按钮即可。</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/gl3.png" />
+					</div>
+					<div class="boat-detail-text">2)
+						选中“分类属性”选项，进入如上图界面。然后进行编辑，编辑完成后，点击“保存”按钮即可。</div>
+				</div>
+			</div>
+			<!-- 间隔条 -->
+			<div class="divider-content">
+				<span></span>
+			</div>
+
+			<div class="row-fluid">
+				<div class="span4">
+					<div>
+						<img src="../img/wx/gl4.png" />
+					</div>
+					<div class="boat-detail-text">3)
+						选中“船舶介绍”选项，进入如上图界面。然后进行编辑，编辑完成后，点击“保存”按钮即可。</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/gl5.png" />
+					</div>
+					<div class="boat-detail-text">4)
+						选中“船舶接货”选项，进入如上图界面。在该界面中：上面是接货类别，下面是接货港口。上面的操作，只要选中即可，下面的操作，点击“+”按钮会弹出一个对话框，你可以在对话框中选择接货城市或者接货港口，然后点击“确定”，该选中的接货地就出现在接货港口下方，最后点击“保存”按钮即可。</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/gl6.png" />
+					</div>
+					<div class="boat-detail-text">5)
+						选中“合同模板”选项，进入如上图界面。然后进行编辑，编辑完成后，点击“保存”按钮即可。</div>
+				</div>
+				</div>
+				<!-- 间隔条 -->
+			<div class="divider-content">
+				<span></span>
+			</div>
+				<div class="row-fluid">
+				<div class="span4">
+					<div>
+						<img src="../img/wx/gl7.png" />
+					</div>
+					<div class="boat-detail-text">6)
+						选中“认证资料”选项，进入如上图界面。然后进行编辑，编辑完成后，点击“保存”按钮即可。</div>
+				</div>
+				<div class="span4">
+					<div>
+						<img src="../img/wx/gl1.png" />
+					</div>
+					<div class="boat-detail-text">7)
+						最后查看你的船舶列表，刚才添加的船舶信息就会在你的列表内，界面如上图所示。该方法适合于添加少量船舶。<br>
+						针对我的一条船舶你可以点击“修改”按钮完善该船舶信息的录入。你可以点击“删除”按钮删除该条船舶信息。
+						你可以点击“发布”按钮发布该条船舶信息，发布的船舶可在首页搜索出来。对于发布后的船舶，如果你想对该船舶信息修改、删除，你必须先点击“取消”按钮，取消该船舶的发布状态后，方可对其操作。
+						</div>
+				</div>
+				</div>
+			</div>
+
+	</div>
+</body>
+</html>

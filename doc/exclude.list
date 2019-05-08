@@ -1,0 +1,9 @@
+.svn
+.settings
+doc
+.classpath
+.project
+.tern-project
+src/test/resources
+target
+WebContent/WEB-INF/classes/
